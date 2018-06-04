@@ -1,17 +1,46 @@
 <template>
   <div>
-    <h3>Hello {{ name }} from my Vue.js page, built with Webpack 4!</h3>
-    <h1>Product card</h1>
-    <z-product-card product='{"name": "Test", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg", "price": {"old": 111, "current": 11111}, "brand": "asdasdasasd"}'></z-product-card>
+    <div class="demo-container">
+      <div class="col-left">
+        <h2>Custom web component test</h2>
+    <z-product-card class="product-grid-item"  v-for="product in products" :product="procesProduct(product)"  v-on:productLiked="onProductLiked"></z-product-card>
+      </div>
+      <div class="col-right">
+        <h2>Liked products</h2>
+        <ul class="liked-products">
+          <li  v-for="like in liked">
+            <img v-bind:src="like.image"
+                 alt="like.name">{{like.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+  import Vue from 'vue'
+  import {products} from '../../mocks/products';
+  export default {
   props: {
     name: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    procesProduct (product) {
+      return JSON.stringify(product)
+    },
+    onProductLiked(evt) {
+      const liked = evt.detail ? JSON.parse(evt.detail ): {};
+      this.$store.commit('addLike', liked)
+    }
+  },
+  data() {
+    return {
+      products : products,
+      liked: this.$store.getters.liked
     }
   }
 }

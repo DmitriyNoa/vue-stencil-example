@@ -4,6 +4,7 @@
   "description": "A Vuejs template using Webpack 4",
   "main": "index.js",
   "scripts": {
+    "start": "npm run dev",
     "dev": "webpack-dev-server --progress --config build/webpack.config.dev.js",
     "prod": "webpack --config build/webpack.config.prod.js",
     "lint": "eslint --ext .js,.vue src",
@@ -18,7 +19,9 @@
   "license": "MIT",
   "dependencies": {
     "vue": "^2.5.16",
+    "vue-localstorage": "^0.6.2",
     "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
     "z-product-card": "^0.1.1"
   },
   "devDependencies": {
