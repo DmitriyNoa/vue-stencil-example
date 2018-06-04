@@ -20,10 +20,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        use: 'eslint-loader',
-        enforce: 'pre'
-      }, {
         test: /\.vue$/,
         use: 'vue-loader'        
       }, {
@@ -69,13 +65,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      files: [
+        'dist/z-product-card/zlib.js'
+      ]
     }),    
     new VueLoaderPlugin(),
     new CopyWebpackPlugin([{
       from: utils.resolve('static/img'),
       to: utils.resolve('dist/static/img'),
       toType: 'dir'
-    }])
+    },
+      { from: './node_modules/z-product-card/dist', to: utils.resolve('dist/z-product-card') }
+    ])
   ]
 }
