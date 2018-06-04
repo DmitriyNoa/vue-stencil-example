@@ -1,4 +1,4 @@
-# vue-webpack4-template
+# vue-stencil-example
 VueJs template using Webpack 4
 
 This repository is an implementation of the 'Vue.js and Webpack 4 From Scratch' article series on [itnext.io](https://itnext.io).
