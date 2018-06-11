@@ -3,7 +3,7 @@
     <div class="demo-container">
       <div class="col-left">
         <h2>Custom web component test</h2>
-    <z-product-card class="product-grid-item"  v-for="product in products" :product="procesProduct(product)"  v-on:productLiked="onProductLiked"></z-product-card>
+    <z-product-card class="product-grid-item"  v-for="product in products" :product.prop="product"  v-on:productLiked="onProductLiked"></z-product-card>
       </div>
       <div class="col-right">
         <h2>Liked products</h2>
@@ -29,12 +29,8 @@
     }
   },
   methods: {
-    procesProduct (product) {
-      return JSON.stringify(product)
-    },
     onProductLiked(evt) {
-      const liked = evt.detail ? JSON.parse(evt.detail ): {};
-      this.$store.commit('addLike', liked)
+      this.$store.commit('addLike', evt.detail)
     }
   },
   data() {
