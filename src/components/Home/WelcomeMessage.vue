@@ -2,7 +2,7 @@
   <div>
     <div class="demo-container">
       <div class="col-left">
-        <h2>Custom web component test</h2>
+        <h2>Vue custom web component test</h2>
     <z-product-card class="product-grid-item"  v-for="product in products" :product.prop="product"  v-on:productLiked="onProductLiked"></z-product-card>
       </div>
       <div class="col-right">
