@@ -76,7 +76,8 @@ module.exports = {
       to: utils.resolve('dist/static/img'),
       toType: 'dir'
     },
-      { from: './node_modules/z-product-card/dist', to: utils.resolve('dist/z-product-card') }
+      { from: './node_modules/z-product-card/dist', to: utils.resolve('dist/z-product-card') },
+      { from: './node_modules/z-product-card/dist/collection/assets', to: utils.resolve('dist/assets') }
     ])
   ]
 }
